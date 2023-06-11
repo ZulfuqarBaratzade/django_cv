@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.validators import MaxValueValidator,MinValueValidator
 
 # Create your models here.
 class AbstractModel(models.Model):
@@ -71,3 +72,21 @@ class ImageSettings(AbstractModel):
         verbose_name = "Image Settings"
         verbose_name_plural = "Image Settings"
         ordering = ('name',)
+class Skill(AbstractModel):
+    order = models.IntegerField(
+        default=0,
+        verbose_name='Order',
+    )
+    name = models.CharField(
+        default='',
+        max_length=254,
+        blank=True,
+        verbose_name='name',
+
+    )
+    percentage= models.IntegerField(
+        default=50,
+        verbose_name='Percentage',
+        validators=[MinValueValidator(0), MaxValueValidator(100)],
+    )
+        

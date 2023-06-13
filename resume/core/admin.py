@@ -31,3 +31,8 @@ class SkillAdmin(admin.ModelAdmin):
 
     class Meta:
         model = Skill
+
+
+
+
+        

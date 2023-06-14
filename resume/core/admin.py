@@ -21,8 +21,8 @@ class ImageSettingsAdmin(admin.ModelAdmin):
 
     class Meta:
         model = ImageSettings
-@admin.register(Skill)
 
+@admin.register(Skill)
 class SkillAdmin(admin.ModelAdmin):
     list_display=['id','order','name','percentage','updated_date','created_date']
 
@@ -31,6 +31,8 @@ class SkillAdmin(admin.ModelAdmin):
 
     class Meta:
         model = Skill
+
+    
 
 
 

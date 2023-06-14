@@ -117,42 +117,28 @@
 					<div class="tab-content" id="myTabContent">
 						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
 							<ul class="list">
+
+
+								{% for experiences in experience %}
 								<li>
 									<span></span>
+
+
+
 									<div class="media">
 										<div class="d-flex">
-											<p>March 2017 to present</p>
+											<p> {{experiences.start_date}} to {{ experiences.end_date }}</p>
 										</div>
 										<div class="media-body">
-											<h4>Colorlib</h4>
-											<p>Senior Web Developer <br />Santa monica, Los angeles</p>
+											<h4>{{ experiences.company_name }}</h4>
+											<p>{{ experiences.job_title }} <br />{{ experiences.job_location }}</p>
 										</div>
 									</div>
+
+
+
 								</li>
-								<li>
-									<span></span>
-									<div class="media">
-										<div class="d-flex">
-											<p>March 2017 to present</p>
-										</div>
-										<div class="media-body">
-											<h4>Colorlib</h4>
-											<p>Senior Web Developer <br />Santa monica, Los angeles</p>
-										</div>
-									</div>
-								</li>
-								<li>
-								<span></span>
-									<div class="media">
-										<div class="d-flex">
-											<p>March 2017 to present</p>
-										</div>
-										<div class="media-body">
-											<h4>Colorlib</h4>
-											<p>Senior Web Developer <br />Santa monica, Los angeles</p>
-										</div>
-									</div>
-								</li>
+								{% endfor %}
 							</ul>
 						</div>
 						<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">

@@ -32,6 +32,9 @@
                             </ul>
                         </li> 
                         <li class="nav-item"><a class="nav-link" href="{% url 'contact' %}">Contact</a></li>
+                        {% for doc in document %}
+                            <li class="nav-item"><a class="nav-link" href="{{ doc.file.url }}" target="_blank"><i class="fa fa-download" style="margin-left: 5px;"> {{ doc.button_text }}</i></a></li>
+                        {% endfor %}
                     </ul>
                 </div> 
             </div>

@@ -1,5 +1,6 @@
 from django.shortcuts import render,redirect,get_object_or_404
 from core.models import General_Settings, ImageSettings, Skill, Experience,Education,SocialMedia,Document
+from contact.views import ContactForm
 # Create your views here.
 def layout(request):
     site_title = General_Settings.objects.get(name='site_title').parameter
@@ -49,7 +50,11 @@ def about(request):
 def blog(request):
     return render(request,'blog.html')
 def contact(request):
-    return render(request,'contact.html')
+    contact_form = ContactForm()
+    context = {
+            'contact_form': contact_form,
+        }
+    return render(request,'contact.html',context)
 def porfolio(request):
     return render(request,'portfolio.html')
 def services(request):

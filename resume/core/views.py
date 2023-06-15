@@ -1,5 +1,5 @@
-from django.shortcuts import render
-from core.models import General_Settings, ImageSettings, Skill, Experience,Education,SocialMedia
+from django.shortcuts import render,redirect,get_object_or_404
+from core.models import General_Settings, ImageSettings, Skill, Experience,Education,SocialMedia,Document
 # Create your views here.
 def index(request):
     site_title = General_Settings.objects.get(name='site_title').parameter
@@ -37,6 +37,10 @@ def index(request):
 
 
     return render(request,'index.html',context=context)
+
+def redirect_url(request,slug):
+    doc = get_object_or_404(Document,slug=slug)
+    return redirect(doc.file.url)
 
 def about(request):
     site_title = General_Settings.objects.get(name='site_title').parameter

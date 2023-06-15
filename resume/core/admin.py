@@ -60,6 +60,15 @@ class SocialMediaAdmin(admin.ModelAdmin):
 
     class Meta:
         model = SocialMedia
+@admin.register(Document)
+class DocumentAdmin(admin.ModelAdmin):
+    list_display=['id','slug','file','button_text','updated_date','created_date']
+
+    search_fields = ['slug']
+    list_editable=['slug','file','button_text',]
+
+    class Meta:
+        model = Document
 
 
     

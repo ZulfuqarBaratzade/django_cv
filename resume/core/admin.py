@@ -42,6 +42,16 @@ class ExperienceAdmin(admin.ModelAdmin):
     class Meta:
         model = Experience
 
+@admin.register(Education)
+class EducationAdmin(admin.ModelAdmin):
+    list_display=['id','edu_name','edu_title','edu_location','start_date','end_date']
+
+    search_fields = ['edu_name','edu_title','edu_location']
+    list_editable=['edu_name','edu_title','edu_location','start_date','end_date']
+
+    class Meta:
+        model = Experience
+
 
     
 

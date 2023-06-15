@@ -1,5 +1,6 @@
 from django import forms
-
+from django.core.mail import EmailMessage
+from resume import settings
 
 class ContactForm(forms.Form):
     name = forms.CharField(
@@ -18,3 +19,22 @@ class ContactForm(forms.Form):
         widget=forms.Textarea,
         required=True,
     )
+    def send_email(self):
+        if self.is_valid():
+            name = self.cleaned_data['name']
+            email = self.cleaned_data['email']
+            subject = self.cleaned_data['subject']
+            message = self.cleaned_data['message']
+            message_context = 'Message recieved. \n\n' \
+                              'Name: %s\n' \
+                              'Subject: %s\n'\
+                              'Email: %s\n' \
+                              'Message: %s ' % (name, subject, email, message)  
+            # Send Email here 
+            email = EmailMessage(
+                subject,
+                message_context,
+                to=[settings.DEFAULT_FROM_EMAIL],
+                reply_to=[email],
+
+            )
